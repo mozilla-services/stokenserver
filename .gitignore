@@ -1,0 +1,7 @@
+.Python
+lib
+bin
+include
+man
+*.pyc
+*.egg-info
