@@ -1,5 +1,5 @@
 from zope.interface import Interface, implements
-from tokenlib.metadata.sql import SQLMetadata
+from wimms.sql import SQLMetadata
 
 
 class IMetadataDB(Interface):

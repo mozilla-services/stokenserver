@@ -9,7 +9,7 @@ from webtest import TestApp
 from stokenserver.metadata import IMetadataDB
 
 from mozsvc.config import load_into_settings
-from mozsvc.util import CatchErrors
+from cornice.tests import CatchErrors
 
 
 class TestFixedBackend(unittest.TestCase):
