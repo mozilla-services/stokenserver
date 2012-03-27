@@ -32,18 +32,9 @@ python%{pyver} setup.py build
 
 %install
 
-# the config files for Sync apps
-mkdir -p %{buildroot}%{_sysconfdir}/stokenserver
-install -m 0644 etc/stokenserver-prod.ini %{buildroot}%{_sysconfdir}/stokenserver/stokenserver-prod.ini
-
-# nginx config
-mkdir -p %{buildroot}%{_sysconfdir}/nginx
-mkdir -p %{buildroot}%{_sysconfdir}/nginx/conf.d
-install -m 0644 etc/stokenserver.nginx.conf %{buildroot}%{_sysconfdir}/nginx/conf.d/stokenserver.conf
-
-# logging
-mkdir -p %{buildroot}%{_localstatedir}/log
-touch %{buildroot}%{_localstatedir}/log/stokenserver.log
+# the config files for stoken
+mkdir -p %{buildroot}%{_sysconfdir}/mozilla-services/stoken
+install -m 0644 etc/stokenserver-prod.ini %{buildroot}%{_sysconfdir}/mozilla-services/stoken/production.ini
 
 # the app
 python%{pyver} setup.py install --single-version-externally-managed --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
@@ -52,16 +43,10 @@ python%{pyver} setup.py install --single-version-externally-managed --root=$RPM_
 rm -rf $RPM_BUILD_ROOT
 
 %post
-touch %{_localstatedir}/log/stokenserver.log
-chown nginx:nginx %{_localstatedir}/log/stokenserver.log
-chmod 640 %{_localstatedir}/log/stokenserver.log
 
 %files -f INSTALLED_FILES
 
-%attr(640, nginx, nginx) %ghost %{_localstatedir}/log/stokenserver.log
-
 %dir %{_sysconfdir}/stokenserver/
-
 %config(noreplace) %{_sysconfdir}/stokenserver/*
 %config(noreplace) %{_sysconfdir}/nginx/conf.d/stokenserver.conf
 
