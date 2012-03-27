@@ -12,8 +12,6 @@ cornice==0.7
 coverage==3.5.1
 docutils==0.8.1
 macauthlib==0.1
-metlog-py==0.8.2
-mozsvc==0.2
 simplejson==2.4
 translationstring==1.1
 unittest2==0.5.1
@@ -27,3 +25,7 @@ zope.event==3.5.1
 repoze.lru==0.4
 pyramid_debugtoolbar==0.9.4
 wsgi_intercept
+Sphinx==1.1.2
+Pygments==1.4
+ordereddict==1.1
+SQLAlchemy==0.7.3
