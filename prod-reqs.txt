@@ -22,3 +22,9 @@ venusian==1.0a3
 wsgiref==0.1.2
 zope.deprecation==3.5.1
 zope.interface==3.8
+pyramid_jinja2==1.2
+zope.component==3.11
+zope.event==3.5.1
+repoze.lru==0.4
+pyramid_debugtoolbar==0.9.4
+wsgi_intercept
