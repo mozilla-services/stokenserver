@@ -69,10 +69,6 @@ test:
 
 build_rpms:
 	cd /tmp; rm -f /tmp/master.zip
-	cd /tmp; wget https://github.com/mozilla-services/wimms/zipball/master --no-check-certificate
-	cd /tmp; mv master master.zip
-	bin/pypi2rpm.py /tmp/master.zip --dist-dir=$(CURDIR)
-	cd /tmp; rm -f /tmp/master.zip
 	cd /tmp; wget https://github.com/Pylons/pyramid/zipball/master --no-check-certificate
 	cd /tmp; mv master master.zip
 	rm -rf rpms
@@ -80,7 +76,7 @@ build_rpms:
 	bin/pypi2rpm.py /tmp/master.zip --dist-dir=$(CURDIR)
 	$(BUILDRPMS) -t $(TIMEOUT) -c $(RPM_CHANNEL) $(DEPS)
 
-mach: build build_rpms
+mock: build build_rpms
 	mock init
 	mock --install python26 python26-setuptools openssl python26-m2crypto
 	mock --install rpms/*
