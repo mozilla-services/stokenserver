@@ -46,8 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f INSTALLED_FILES
 
-%dir %{_sysconfdir}/stokenserver/
-%config(noreplace) %{_sysconfdir}/stokenserver/*
-%config(noreplace) %{_sysconfdir}/nginx/conf.d/stokenserver.conf
+%dir %{_sysconfdir}/mozilla-services/stokenserver/
+%config(noreplace) %{_sysconfdir}/mozilla-services/stokenserver/*
 
 %defattr(-,root,root)
