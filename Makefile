@@ -17,7 +17,8 @@ PYPI2RPM = bin/pypi2rpm.py --index=$(PYPI)
 PYPIOPTIONS = -i $(PYPI)
 CHANNEL = dev
 RPM_CHANNEL = dev
-PIP_CACHE = /tmp/pip-cache
+PIP_CACHE = /tmp/pip-cache.${USER}
+BUILD_TMP = /tmp/stoken-build.${USER}
 INSTALL = bin/pip install --download-cache=$(PIP_CACHE)
 BUILDAPP = bin/buildapp --download-cache=$(PIP_CACHE)
 BUILDRPMS = bin/buildrpms --download-cache=$(PIP_CACHE)
@@ -68,12 +69,12 @@ test:
 	$(NOSE) $(TESTS)
 
 build_rpms:
-	cd /tmp; rm -f /tmp/master.zip
-	cd /tmp; wget https://github.com/Pylons/pyramid/zipball/master --no-check-certificate
-	cd /tmp; mv master master.zip
+	mkdir -p ${BUILD_TMP}
+	rm -f ${BUILD_TMP}/master.zip
+	wget -O ${BUILD_TMP}/master.zip https://github.com/Pylons/pyramid/zipball/master --no-check-certificate
 	rm -rf rpms
 	mkdir rpms
-	bin/pypi2rpm.py /tmp/master.zip --dist-dir=$(RPMDIR)
+	bin/pypi2rpm.py ${BUILD_TMP}/master.zip --dist-dir=$(RPMDIR)
 	$(BUILDRPMS) -t $(TIMEOUT) -c $(RPM_CHANNEL) $(DEPS)
 
 mock: build build_rpms
