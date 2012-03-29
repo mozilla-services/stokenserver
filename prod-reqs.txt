@@ -32,3 +32,4 @@ ordereddict==1.1
 SQLAlchemy==0.7.6
 PyMySQL==0.5
 pymysql_sa
+gevent
