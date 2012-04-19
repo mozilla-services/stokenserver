@@ -69,12 +69,6 @@ test:
 	$(NOSE) $(TESTS)
 
 build_rpms:
-	mkdir -p ${BUILD_TMP}
-	rm -f ${BUILD_TMP}/master.zip
-	wget -O ${BUILD_TMP}/master.zip https://github.com/Pylons/pyramid/zipball/master --no-check-certificate
-	rm -rf rpms
-	mkdir rpms
-	bin/pypi2rpm.py ${BUILD_TMP}/master.zip --dist-dir=$(RPMDIR)
 	$(BUILDRPMS) -t $(TIMEOUT) -c $(RPM_CHANNEL) $(DEPS)
 
 mock: build build_rpms
