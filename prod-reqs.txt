@@ -31,6 +31,9 @@ Pygments==1.4
 ordereddict==1.1
 SQLAlchemy==0.7.6
 PyMySQL==0.5
-pymysql_sa
-gevent
+pymysql_sa==1.0
+gevent==0.13.7
 greenlet==0.3.4
+wimms==0.2
+tokenlib==0.1
+mozsvc==0.3

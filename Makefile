@@ -1,5 +1,5 @@
 APPNAME = stokenserver
-DEPS = https://github.com/mozilla-services/wimms,https://github.com/mozilla-services/tokenlib,https://github.com/mozilla-services/mozservices
+DEPS =
 VIRTUALENV = virtualenv
 PYTHON = $(CURDIR)/bin/python
 NOSE = bin/nosetests -s --with-xunit
@@ -59,7 +59,7 @@ build:
 	$(INSTALL) nose
 	$(INSTALL) WebTest
 	$(INSTALL) wsgi_intercept
-	$(INSTALL) https://github.com/mozilla-services/wimms/zipball/master 
+	$(INSTALL) https://github.com/mozilla-services/wimms/zipball/master
 	$(BUILDAPP) -t $(TIMEOUT) -c $(CHANNEL) $(PYPIOPTIONS) $(DEPS)
 
 update:
