@@ -60,6 +60,7 @@ build:
 	$(INSTALL) WebTest
 	$(INSTALL) wsgi_intercept
 	$(INSTALL) https://github.com/mozilla-services/wimms/zipball/master
+	bin/easy_install `bin/python ezgevent.py`
 	$(BUILDAPP) -t $(TIMEOUT) -c $(CHANNEL) $(PYPIOPTIONS) $(DEPS)
 
 update:
@@ -69,6 +70,10 @@ test:
 	$(NOSE) $(TESTS)
 
 build_rpms:
+	mkdir -p ${BUILD_TMP}
+	cd ${BUILD_TMP} && wget http://pypi.python.org/packages/source/g/gevent/gevent-0.13.7.tar.gz
+	bin/pypi2rpm.py ${BUILD_TMP}/gevent-0.13.7.tar.gz
+	rm ${BUILD_TMP}/gevent-0.13.7.tar.gz
 	$(BUILDRPMS) -t $(TIMEOUT) -c $(RPM_CHANNEL) $(DEPS)
 
 mock: build build_rpms
