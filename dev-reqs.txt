@@ -26,7 +26,7 @@ zope.component==3.11
 zope.event==3.5.1
 repoze.lru==0.4
 pyramid_debugtoolbar==0.9.4
-wsgi_intercept
+wsgi_intercept==0.5.1
 Sphinx==1.1.2
 Pygments==1.4
 ordereddict==1.1
