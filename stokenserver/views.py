@@ -24,7 +24,7 @@ def get_email(request):
     request.validated['service'] = request.matchdict['service']
 
 
-@metadata.post(validator=get_email)
+@metadata.post(validators=(get_email, ))
 def allocate_node(request):
     metadata_db = request.registry.queryUtility(IMetadataDB)
     uid, node = metadata_db.allocate_node(request.validated['email'],
