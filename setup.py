@@ -16,4 +16,4 @@ setup(name='stokenserver',
       """,
       install_requires=requires,
       tests_require=requires,
-      test_suite='tokenserver.tests')
+      test_suite='stokenserver.tests')
