@@ -47,11 +47,11 @@ class TestFixedBackend(unittest.TestCase):
     def test_read_config(self):
         user, service = 'tarek@mozilla.com', 'sync'
         if self._sqlite:
-            wanted = (1, u'phx12')
+            wanted = (1, u'phx12', None)
         else:
-            wanted = (0, u'phx12')
+            wanted = (0, u'phx12', None)
 
-        self.assertEqual(wanted, self.backend.allocate_node(user, service))
+        self.assertEqual(wanted[:-1], self.backend.allocate_node(user, service))
         self.assertEqual(wanted, self.backend.get_node(user, service))
 
     def test_api(self):
