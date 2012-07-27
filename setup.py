@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 requires = ['cornice', 'mozsvc']
 
 setup(name='stokenserver',
-      version='0.4',
+      version='0.5',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
