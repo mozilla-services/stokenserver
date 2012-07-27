@@ -35,6 +35,6 @@ PyMySQL==0.5
 pymysql_sa==1.0
 gevent==0.13.7
 greenlet==0.3.4
-wimms==0.2.1
+wimms==0.3
 tokenlib==0.1
 mozsvc==0.4
